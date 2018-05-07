@@ -45,13 +45,13 @@ if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages))
                             href="<?php echo $plugin['plugin']->website; ?>"><?php echo $plugin['plugin']->copyright; ?></a>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
                         <em>
                         <?php echo Yii::t("plugin", "Description"); ?>: </em><?php echo $plugin['plugin']->description; ?>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="text-right">
                             <?php
                             switch ($status) :
@@ -67,7 +67,7 @@ if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages))
                                 title="<?php echo Yii::t("plugin", 'Setting'); ?>" 
                                 href="<?php echo $this->createUrl('/plugin/pluginManage/setting', array('id' => $plugin['plugin']->identify)); ?>" 
                             >
-                                <i class="fa-cogs fa-2x"></i>
+                                <i class="fa fa-cogs fa-2x"></i>
                             </a>					
 
                             <a class="btn btn-xs btn-link p_uninstall" 

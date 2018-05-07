@@ -2,6 +2,8 @@
 
 namespace zacksleo\yii\plugin\libs;
 
+use zacksleo\yii\plugin\models\PluginsSetting;
+
 /**
  * Yii-Plugin module
  * 
