@@ -2,6 +2,7 @@
 
 namespace zacksleo\yii\plugin\libs;
 
+use yii;
 use zacksleo\yii\plugin\models\PluginsSetting;
 
 class PluginBase extends \CBaseController
@@ -47,7 +48,7 @@ class PluginBase extends \CBaseController
      * @param string $path the asset (file or directory) to be published
      * @return string an absolute URL to the published asset
      */
-    public function PublishAssets($path, $absolute = true)
+    public function publishAssets($path, $absolute = true)
     {
         if (substr($path, 0, 1) != '/') {
             $path = DIRECTORY_SEPARATOR . $path;

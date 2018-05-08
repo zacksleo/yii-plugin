@@ -2,7 +2,9 @@
 
 namespace zacksleo\yii\plugin\components;
 
+use yii;
 use zacksleo\yii\plugin\libs\PluginAbstract;
+use zacksleo\yii\plugin\models\Plugins;
 
 $moduleDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
 Yii::setPathOfAlias('pluginModule', $moduleDir);
