@@ -15,7 +15,6 @@ class PluginManageController extends \CController
     private $plugins = array();
     private $PluginManger;
 
-
     public function init()
     {
         parent::init();
@@ -86,13 +85,13 @@ class PluginManageController extends \CController
 
     public function actionMarket()
     {
-
     }
 
     public function actionInstall()
     {
-        if (!isset($_POST['id']))
+        if (!isset($_POST['id'])) {
             $this->_ajax(0);
+        }
         $id = $_POST['id'];
         $plugin = $this->_loadPluginFromIdentify($id);
         $result = $this->PluginManger->Install($plugin);
@@ -105,8 +104,9 @@ class PluginManageController extends \CController
 
     public function actionUninstall()
     {
-        if (!isset($_POST['id']))
+        if (!isset($_POST['id'])) {
             $this->_ajax(0);
+        }
         $id = $_POST['id'];
         $plugin = $this->_loadPluginFromIdentify($id);
         $result = $this->PluginManger->Uninstall($plugin);
@@ -119,8 +119,9 @@ class PluginManageController extends \CController
 
     public function actionEnable()
     {
-        if (!isset($_POST['id']))
+        if (!isset($_POST['id'])) {
             $this->_ajax(0);
+        }
         $id = $_POST['id'];
         $plugin = $this->_loadPluginFromIdentify($id);
         if ($this->PluginManger->Enable($plugin)) {
@@ -133,8 +134,9 @@ class PluginManageController extends \CController
 
     public function actionDisable()
     {
-        if (!isset($_POST['id']))
+        if (!isset($_POST['id'])) {
             $this->_ajax(0);
+        }
         $id = $_POST['id'];
         $plugin = $this->_loadPluginFromIdentify($id);
         if ($this->PluginManger->Disable($plugin)) {
@@ -204,8 +206,9 @@ class PluginManageController extends \CController
 
     private function _setMenu($force = false)
     {
-        if (!$force)
+        if (!$force) {
             $cache = Yii::app()->cache->get('PluginMenu');
+        }
         if ($cache) {
             $this->menu = $cache;
             return;
@@ -233,7 +236,4 @@ class PluginManageController extends \CController
         echo json_encode(array('status' => $status, 'data' => $data));
         Yii::app()->end();
     }
-
 }
-
-?>

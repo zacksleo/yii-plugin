@@ -1,16 +1,8 @@
 <?php
 namespace zacksleo\yii\plugin\controllers;
-/**
- * Yii-Plugin module
- * 
- * @author Viking Robin <healthlolicon@gmail.com> 
- * @link https://github.com/health901/yii-plugin
- * @license https://github.com/health901/yii-plugins/blob/master/LICENSE
- * @version 1.0
- */
+
 class PluginController extends CController
 {
-
     public $layout = 'layout';
     public $subhead;
 
@@ -54,8 +46,9 @@ class PluginController extends CController
     {
         @include_once($model->path . DIRECTORY_SEPARATOR . $model->identify . 'Plugin.php');
         $class = $model->identify . 'Plugin';
-        if (!class_exists($class))
+        if (!class_exists($class)) {
             return false;
+        }
         return new $class();
     }
 
@@ -68,7 +61,4 @@ class PluginController extends CController
         }
         return new $class();
     }
-
 }
-
-?>

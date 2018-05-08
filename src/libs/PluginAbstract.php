@@ -2,17 +2,8 @@
 
 namespace zacksleo\yii\plugin\libs;
 
-/**
- * Yii-Plugin module
- * 
- * @author Viking Robin <healthlolicon@gmail.com> 
- * @link https://github.com/health901/yii-plugin
- * @license https://github.com/health901/yii-plugins/blob/master/LICENSE
- * @version 1.0
- */
 abstract class PluginAbstract extends PluginBase
 {
-
     public $plugin;
 
     public function run()
@@ -36,7 +27,6 @@ abstract class PluginAbstract extends PluginBase
         $this->i18n = $plugin->i18n;
         $this->pluginDir = $plugin->pluginDir;
     }
-
 }
 
 /**
@@ -92,5 +82,4 @@ class PluginAdmin extends PluginAbstract
     {
         return Yii::app()->user->getFlashes();
     }
-
 }

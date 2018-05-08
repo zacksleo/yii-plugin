@@ -4,17 +4,8 @@ namespace zacksleo\yii\plugin\libs;
 
 use zacksleo\yii\plugin\models\PluginsSetting;
 
-/**
- * Yii-Plugin module
- * 
- * @author Viking Robin <healthlolicon@gmail.com> 
- * @link https://github.com/health901/yii-plugin
- * @license https://github.com/health901/yii-plugins/blob/master/LICENSE
- * @version 1.0
- */
 class PluginBase extends \CBaseController
 {
-
     public $pluginDir;
     public $viewDir = 'views';
     public $i18n;
@@ -304,5 +295,4 @@ class PluginBase extends \CBaseController
         }
         return false;
     }
-
 }

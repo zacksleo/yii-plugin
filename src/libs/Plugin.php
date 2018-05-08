@@ -4,17 +4,8 @@ namespace zacksleo\yii\plugin\libs;
 
 use yii;
 
-/**
- * Yii-Plugin module
- * 
- * @author Viking Robin <healthlolicon@gmail.com> 
- * @link https://github.com/health901/yii-plugin
- * @license https://github.com/health901/yii-plugins/blob/master/LICENSE
- * @version 1.0
- */
 abstract class Plugin extends PluginBase
 {
-
     private $info = array(
         'identify' => '',
         'version' => '',
@@ -63,7 +54,7 @@ abstract class Plugin extends PluginBase
     /**
      * adv usage
      * return admincp file's name
-     * @return string admincp 
+     * @return string admincp
      */
     public function setAdminCp()
     {
@@ -95,19 +86,13 @@ abstract class Plugin extends PluginBase
     }
 
     /**
-     * *************************************************
-     *  methods below can be used in plugins
-     * *************************************************
-     */
-
-    /**
      * execute a sql statement
      * prefix in sql will be replace to the project's prefix
      * @param string $sql    sql statement
      * @param string $prefix prefix in sql statement
      * @return boolean
      */
-    protected function Query($sql, $prefix = 'tbl_')
+    protected function query($sql, $prefix = 'tbl_')
     {
         $db = Yii::app()->db;
         $tablePrefix = $db->tablePrefix;
@@ -129,7 +114,7 @@ abstract class Plugin extends PluginBase
      *   Internal methods
      * **************************************** 
      */
-    public function Icon()
+    public function icon()
     {
         if (!$this->icon) {
             return false;
@@ -137,7 +122,7 @@ abstract class Plugin extends PluginBase
         return Yii::app()->getAssetManager()->publish($this->pluginDir . DIRECTORY_SEPARATOR . $this->icon);
     }
 
-    public function LoadHook($string)
+    public function loadHook($string)
     {
         $hk = explode('.', $string);
         if (!$hk[1])
@@ -179,6 +164,4 @@ abstract class Plugin extends PluginBase
             return false;
         }
     }
-
 }
-
