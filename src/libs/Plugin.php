@@ -6,7 +6,7 @@ use yii;
 
 abstract class Plugin extends PluginBase
 {
-    private $info = array(
+    private $info = [
         'identify' => '',
         'version' => '',
         'copyright' => '',
@@ -14,7 +14,7 @@ abstract class Plugin extends PluginBase
         'description' => '',
         'name' => '',
         'icon' => '',
-    );
+    ];
 
     public function __construct()
     {
@@ -25,12 +25,6 @@ abstract class Plugin extends PluginBase
     }
 
     /**
-     * *************************************************
-     *  methods below can be overridden or implemented
-     * *************************************************
-     */
-
-    /**
      * initialize plugin, set plugin infos
      */
     abstract public function init();
@@ -39,14 +33,14 @@ abstract class Plugin extends PluginBase
      * return an array of hooks,all plugins have to implement this method.
      * @return array Hooks list
      */
-    abstract public function Hooks();
+    abstract public function hooks();
 
     /**
      * adv usage
      * return an array of Actions's class name
      * @return array Actions list
      */
-    public function Actions()
+    public function actions()
     {
         return false;
     }
@@ -68,7 +62,7 @@ abstract class Plugin extends PluginBase
      * MUST TETURN TRUE
      * @return boolean
      */
-    public function Install()
+    public function install()
     {
         return true;
     }
@@ -80,7 +74,7 @@ abstract class Plugin extends PluginBase
      * MUST TETURN TRUE
      * @return boolean
      */
-    public function Uninstall()
+    public function uninstall()
     {
         return true;
     }
@@ -96,8 +90,9 @@ abstract class Plugin extends PluginBase
     {
         $db = Yii::app()->db;
         $tablePrefix = $db->tablePrefix;
-        if ($tablePrefix != $prefix)
+        if ($tablePrefix != $prefix) {
             $sql = str_replace($prefix, $tablePrefix, $sql);
+        }
         $transaction = $db->beginTransaction();
         try {
             $db->createCommand($sql)->execute();
@@ -109,11 +104,6 @@ abstract class Plugin extends PluginBase
         return true;
     }
 
-    /**
-     * ****************************************
-     *   Internal methods
-     * **************************************** 
-     */
     public function icon()
     {
         if (!$this->icon) {
@@ -125,8 +115,9 @@ abstract class Plugin extends PluginBase
     public function loadHook($string)
     {
         $hk = explode('.', $string);
-        if (!$hk[1])
+        if (!$hk[1]) {
             return false;
+        }
         include_once($this->pluginDir . DIRECTORY_SEPARATOR . $hk[0] . DIRECTORY_SEPARATOR . $this->identify . $hk[1] . '.php');
         $class = $this->identify . $hk[1];
         if (!class_exists($class)) {
@@ -146,8 +137,9 @@ abstract class Plugin extends PluginBase
     public function __get($name)
     {
         $value = parent::__get($name);
-        if ($value !== false)
+        if ($value !== false) {
             return $value;
+        }
         if (isset($this->info[$name])) {
             return htmlspecialchars($this->info[$name]);
         }

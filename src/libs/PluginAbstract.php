@@ -34,7 +34,6 @@ abstract class PluginAbstract extends PluginBase
  */
 class PluginAction extends PluginAbstract
 {
-
 }
 
 /**
@@ -42,7 +41,6 @@ class PluginAction extends PluginAbstract
  */
 class PluginHook extends PluginAbstract
 {
-
 }
 
 /**
@@ -50,7 +48,6 @@ class PluginHook extends PluginAbstract
  */
 class PluginAdmin extends PluginAbstract
 {
-
     /**
      * Stores a flash message. A flash message is available only in the current and the next requests
      * @param string $key   key identifying the flash message

@@ -140,5 +140,4 @@ class PluginsSetting extends \CActiveRecord
             return $this->updateByPk(array('plugin' => $plugin, 'key' => $key), array('value' => $value));
         }
     }
-
 }

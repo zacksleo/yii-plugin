@@ -39,20 +39,20 @@ class PluginManger
     public function Enable($plugin)
     {
         $pluginModel = $this->loadModel()->findByAttributes(array('identify' => $plugin->identify));
-        if (!$pluginModel)
+        if (!$pluginModel) {
             return false;
+        }
         $pluginModel->enable = 1;
-
         return $pluginModel->update(array('enable'));
     }
 
     public function Disable($plugin)
     {
         $pluginModel = $this->loadModel()->findByAttributes(array('identify' => $plugin->identify));
-        if (!$pluginModel)
+        if (!$pluginModel) {
             return false;
+        }
         $pluginModel->enable = 0;
-
         return $pluginModel->update(array('enable'));
     }
 

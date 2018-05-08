@@ -1,8 +1,9 @@
 <?php
 use zacksleo\yii\plugin\libs\PluginManger;
 
-if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages))
+if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages)){
     Yii::app()->clientScript->registerCoreScript('jquery.ui');
+}
 ?>
 
 <div class="portlet light ">
@@ -13,8 +14,9 @@ if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages))
     </div>
     <div class="portlet-body">
     <?php foreach ($plugins as $status => $_plugins) :
-        if (empty($_plugins))
-        continue;
+        if (empty($_plugins)) :
+            continue;
+        endif;
     ?>
         <div id="tbl-plugins">
             <?php

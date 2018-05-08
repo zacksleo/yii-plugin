@@ -12,15 +12,17 @@ class PluginBase extends \CBaseController
 
     public function __construct()
     {
-        if (method_exists($this, 'init'))
+        if (method_exists($this, 'init')) {
             $this->init();
+        }
     }
 
     public function __get($name)
     {
         $getter = 'get' . $name;
-        if (method_exists($this, $getter))
+        if (method_exists($this, $getter)) {
             return $this->$getter();
+        }
         return false;
     }
 
@@ -41,7 +43,7 @@ class PluginBase extends \CBaseController
 
     /**
      * Publishes a file or a directory.
-     * This method will copy the specified asset to a web accessible directory and return the URL for accessing the published asset. 
+     * This method will copy the specified asset to a web accessible directory and return the URL for accessing the published asset
      * @param string $path the asset (file or directory) to be published
      * @return string an absolute URL to the published asset
      */
@@ -58,7 +60,7 @@ class PluginBase extends \CBaseController
     /**
      * get coustom plugin setting
      * @param  string $key setting key
-     * @return string      setting value
+     * @return string setting value
      */
     public function getSetting($key)
     {
@@ -77,16 +79,17 @@ class PluginBase extends \CBaseController
     }
 
     /**
-     * render a view 
+     * render a view
      * @param  string 	$view   name of the view to be rendered, the root is <PluginDir>/<viewDir>
      * @param  array 	$data   data to be extracted into PHP variables and made available to the view script
      * @param  boolean 	$return whether the rendering result should be returned instead of being displayed to end users.
-     * @return string          the rendering result. Null if the rendering result is not required.
+     * @return string          the rendering result. Null if the rendering result is not required
      */
     public function render($view, $data = null, $return = false)
     {
-        if (!$view)
+        if (!$view) {
             return false;
+        }
         if (($viewFile = $this->getViewFile($view)) !== false) {
             return $this->renderFile($viewFile, $data, $return);
         }
@@ -95,7 +98,7 @@ class PluginBase extends \CBaseController
     /**
      * Creates a URL for the specified action defined in plugin.
      * @param  string  $action   plugin action name of this url
-     * @param  array   $params   additional GET parameters (name=>value). Both the name and value will be URL-encoded. If the name is '#', the corresponding value will be treated as an anchor and will be appended at the end of the URL.
+     * @param  array   $params   additional GET parameters (name=>value). Both the name and value will be URL-encoded. If the name is '#', the corresponding value will be treated as an anchor and will be appended at the end of the URL
      * @param  boolean $absolute is a absolute url or a relative url
      * @return string            the constructed URL
      */
@@ -136,14 +139,12 @@ class PluginBase extends \CBaseController
         exit;
     }
 
-    ### Cookie
     /**
      * setCookie
-     * @param string $key    cookie identify
-     * @param mixed $value   value of cookie
-     * @param array  $option cookie options, array(option=>value),  such as 'expire','httpOnly','domain'. 
+     * @param string $key cookie identify
+     * @param mixed $value value of cookie
+     * @param array  $option cookie options, array(option=>value),  such as 'expire','httpOnly','domain'
      */
-
     public function setCookie($key, $value = null, $option = array())
     {
         $options = array('expire', 'httpOnly', 'path', 'secure', 'domain');
@@ -159,7 +160,7 @@ class PluginBase extends \CBaseController
     /**
      * get a cookie
      * @param  string $key cookie identify
-     * @return mixed     value of cookie
+     * @return mixed  value of cookie
      */
     public function getCookie($key)
     {
@@ -195,15 +196,13 @@ class PluginBase extends \CBaseController
         Yii::app()->request->cookies->clear();
     }
 
-    ### Cache
     /**
-     * store the value with a key into cache 
+     * store the value with a key into cache
      * @param string  $key    a key identifying the cached value
      * @param mixed  $value  cache value
-     * @param integer $expire the number of seconds in which the cached value will expire. 0 means never expire.
+     * @param integer $expire the number of seconds in which the cached value will expire. 0 means never expire
      * @return true if the value is successfully stored into cache, false otherwise
      */
-
     public function setCache($key, $value, $expire = 0)
     {
         return Yii::app()->cache->set($key, $value, $expire);
@@ -212,7 +211,7 @@ class PluginBase extends \CBaseController
     /**
      * Retrieves a value from cache with a specified key.
      * @param  string $key a key identifying the cached value
-     * @return mixed      the value stored in cache, false if the value is not in the cache, expired or the dependency has changed.
+     * @return mixed  the value stored in cache, false if the value is not in the cache, expired or the dependency has changed
      */
     public function getCache($key)
     {
@@ -222,7 +221,7 @@ class PluginBase extends \CBaseController
     /**
      * Deletes a value with the specified key from cache
      * @param  string $key the key of the value to be deleted
-     * @return boolean      if no error happens during deletion
+     * @return boolean if no error happens during deletion
      */
     public function delCache($key)
     {
@@ -230,7 +229,7 @@ class PluginBase extends \CBaseController
     }
 
     /**
-     * Deletes all values from cache. Be careful of performing this operation if the cache is shared by multiple applications.
+     * Deletes all values from cache. Be careful of performing this operation if the cache is shared by multiple applications
      * @return boolean whether the flush operation was successful.
      */
     public function clearCache()
@@ -238,9 +237,8 @@ class PluginBase extends \CBaseController
         return Yii::app()->cache->flush();
     }
 
-    ### Session
     /**
-     * Adds a session variable. Note, if the specified name already exists, the old value will be removed first.
+     * Adds a session variable. Note, if the specified name already exists, the old value will be removed first
      * @param string $key   session variable name
      * @param mixed $value  session variable value 
      */
@@ -251,9 +249,9 @@ class PluginBase extends \CBaseController
     }
 
     /**
-     * Returns the session variable value with the session variable name.
+     * Returns the session variable value with the session variable name
      * @param  string $key   session variable name
-     * @return mixed    session variable value 
+     * @return mixed    session variable value
      */
     public function getSession($key)
     {
@@ -261,9 +259,9 @@ class PluginBase extends \CBaseController
     }
 
     /**
-     * Removes a session variable.
+     * Removes a session variable
      * @param  string $key   session variable name
-     * @return mixed 	the removed value, null if no such session variable. 
+     * @return mixed 	the removed value, null if no such session variable
      */
     public function delSession($key)
     {
@@ -271,20 +269,19 @@ class PluginBase extends \CBaseController
     }
 
     /**
-     * Frees all session variables and destroys all data registered to a session.
+     * Frees all session variables and destroys all data registered to a session
      */
     public function clearSession()
     {
         Yii::app()->session->destroy();
     }
 
-    ##################################################
-
     public function getViewFile($viewName)
     {
         $ext = '.php';
-        if (strpos($viewName, '.'))
+        if (strpos($viewName, '.')) {
             $viewName = str_replace('.', '/', $viewName);
+        }
         $root = $this->viewDir ? $this->pluginDir . DIRECTORY_SEPARATOR . $this->viewDir : $this->pluginDir;
         if ($this->i18n == 'path') {
             $root = $root . DIRECTORY_SEPARATOR . Yii::app()->getLanguage();

@@ -29,14 +29,16 @@ class HookRender
         foreach ($hooks as $hook) {
             @include_once($hook['path'] . DIRECTORY_SEPARATOR . $hook['identify'] . 'Plugin.php');
             $class = $hook['identify'] . 'Plugin';
-            if (!class_exists($class))
+            if (!class_exists($class)) {
                 continue;
+            }
             $plugin = new $class();
             $act = explode('.', $hook['hook']);
             if ($act[1]) {
                 $h = $plugin->LoadHook($hook['hook']);
-                if (!$h)
+                if (!$h) {
                     continue;
+                }
                 $h->run();
             } else {
                 $render = $act[0];
@@ -48,8 +50,9 @@ class HookRender
     protected function getHooks()
     {
         $plugins = Plugins::model()->findAllByAttributes(array('enable' => 1));
-        if (!$plugins)
+        if (!$plugins) {
             return;
+        }
         foreach ($plugins as $plugin) {
             foreach (unserialize($plugin->hooks) as $pos => $hook) {
                 $this->hooks[$pos][] = array('identify' => $plugin->identify, 'path' => $plugin->path, 'hook' => $hook);

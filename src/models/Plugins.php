@@ -2,15 +2,6 @@
 namespace zacksleo\yii\plugin\models;
 
 /**
- * Yii-Plugin module
- * 
- * @author Viking Robin <healthlolicon@gmail.com> 
- * @link https://github.com/health901/yii-plugin
- * @license https://github.com/health901/yii-plugins/blob/master/LICENSE
- * @version 1.0
- */
-
-/**
  * This is the model class for table "{{plugins}}".
  *
  * The followings are the available columns in table '{{plugins}}':
@@ -112,5 +103,4 @@ class Plugins extends \CActiveRecord
     {
         return parent::model($className);
     }
-
 }
