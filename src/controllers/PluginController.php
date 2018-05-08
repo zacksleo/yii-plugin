@@ -11,7 +11,7 @@ namespace zacksleo\yii\plugin\controllers;
 class PluginController extends CController
 {
 
-    public $layout = '/layouts/layout-portlet';
+    public $layout = 'layout';
     public $subhead;
 
     public function actionIndex()

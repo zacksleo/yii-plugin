@@ -8,7 +8,6 @@ class PluginModule extends \CWebModule
 {
 
     public $pluginRoot = 'application.plugins';
-    public $layout = '/layouts/layout-portlet';
     public $moduleDir;
     public $controllerNamespace = 'zacksleo\yii\plugin\controllers';
 
@@ -19,5 +18,6 @@ class PluginModule extends \CWebModule
         defined('__ROOT__') or define('__ROOT__', Yii::app()->request->baseUrl);
         defined('__VERSION__') or define('__VERSION__', '1.0.0');
         defined('__GROUP__') or define('__GROUP__', __ROOT__ . '/admin/');
+        parent::init();
     }
 }

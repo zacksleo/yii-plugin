@@ -7,10 +7,7 @@ use zacksleo\yii\plugin\libs\PluginManger;
 
 class PluginManageController extends \CController
 {
-
-    public $layout = '/layouts/layout-portlet';
     public $subhead;
-    public $adminLayout;
     public $menu = array();
     public $defaultIcon;
     private $module;
@@ -25,7 +22,6 @@ class PluginManageController extends \CController
         $this->module = Yii::app()->getModule('plugin');
         $this->folder = Yii::getPathOfAlias($this->module->pluginRoot);
         $this->PluginManger = new PluginManger();
-        $this->adminLayout = $this->module->layout;
         $this->layout = $this->module->layout;
         $this->defaultIcon = Yii::app()->getAssetManager()->publish($this->module->moduleDir . DIRECTORY_SEPARATOR . 'default.png');
     }
