@@ -1,7 +1,7 @@
 <?php
 use zacksleo\yii\plugin\libs\PluginManger;
 
-if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages)){
+if (!array_key_exists('bootstrap.js', Yii::app()->clientScript->packages)) {
     Yii::app()->clientScript->registerCoreScript('jquery.ui');
 }
 ?>

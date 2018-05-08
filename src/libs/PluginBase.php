@@ -240,7 +240,7 @@ class PluginBase extends \CBaseController
     /**
      * Adds a session variable. Note, if the specified name already exists, the old value will be removed first
      * @param string $key   session variable name
-     * @param mixed $value  session variable value 
+     * @param mixed $value  session variable value
      */
 
     public function setSession($key, $value)
